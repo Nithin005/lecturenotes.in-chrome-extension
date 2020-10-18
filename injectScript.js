@@ -44,8 +44,11 @@ function constructButton() {
 
 function buttonClicked() {
     const script = document.createElement('script');
+    const button = document.querySelector('.dl-button');
 
     document.body.appendChild(script);
+
+    button.innerText = 'Loading...'
 
     script.onload = function () {
         setTimeout(() => {
@@ -75,10 +78,7 @@ function main() {
     }
     let imgProp = doc.getImageProperties(url);
     doc.addImage(imgProp.data, 'JPEG', 0, 0, imgProp.width, imgProp.height);
-    console.log(imgElement.naturalWidth, imgElement.naturalHeight)
-    button.innerText = (i + 1) + '/' + pageNodes.length
-    console.log(url);
-    console.log(i);
+    button.innerText = `(${i + 1}) /  ${pageNodes.length} loaded`
     i++;
     if (i >= pageNodes.length - 1) {
         setTimeout(() => {
@@ -89,20 +89,29 @@ function main() {
         button.innerText = 'Download';
         return;
     }
-    console.log(i);
     doc.addPage();
     main();
 }
 
 function randomScroll() {
-    const nextButton = document.querySelector("body > div.MuiDialog-root.reader-track > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div > header.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.jss461.mui-fixed.MuiPaper-elevation4 > div > button:nth-child(6) > span.MuiIconButton-label")
-    setInterval(() => {
-        nextButton.click();
-        nextButton.click();
-    }, 300);
+    const button = document.querySelector('.dl-button');
+    const pageNumber = document.querySelector("body > div.MuiDialog-root.reader-track > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div > header.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.jss461.mui-fixed.MuiPaper-elevation4 > div > h6:nth-child(4)");
+    const number = pageNumber.innerText.split(' ')[1];
+    const handler = setInterval(() => {
+        let scrollLen = -window.innerHeight;
+        reader.scrollBy(0, scrollLen);
+        if (i === Number(number)) {
+            clearInterval(handler);
+            button.innerHTML = `
+            <div class="plugin-flex">
+                <div class="check"></div>
+                <div style="margin-left:9px">Downloaded</div>
+            </div>
+            `
+        }
+    }, 1000)
 }
 
 window.onpopstate = history.onpushstate = () => {
-    console.log('State Changed');
     constructButton();
 };
