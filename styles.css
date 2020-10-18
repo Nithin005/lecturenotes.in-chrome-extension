@@ -1,18 +1,67 @@
+:root {
+  --pluginBorderWidth: 7px;
+  --pluginHeight: 24px;
+  --pluginWidth: 12px;
+  --pluginBorderColor: #78b13f;
+}
 .dl-button {
     background-color: white; 
-    color: black; 
+    color: #F11E33; 
     border: 2px solid #f44336;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    border-radius:22px;
+    display: none;
+    font-size: 0.7777777777777778rem;
     margin: 4px 2px;
     transition-duration: 0.4s;
+    position: fixed;
+    right: 10px;
+    bottom: 60px;
     cursor: pointer;
-  }
+    z-index: 999999;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
 
   .dl-button:hover {
     background-color: #f44336;
     color: white;
-  }
+}
+
+.centre {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.loader {
+	background: transparent;
+	width: 84px;
+	height: 84px;
+	border-top: 4px solid rgba(255, 255, 255, 0.3);
+	border-right: 4px solid rgba(255, 255, 255, 0.3);
+	border-bottom: 4px solid rgba(255, 255, 255, 0.3);
+	border-left: 4px solid #fff;
+	border-radius: 50%;
+	animation: spin 1s ease infinite;
+}
+@keyframes spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
+
+.check {
+  display: inline-block;
+  transform: rotate(45deg);
+  height: var(--pluginHeight);
+  width: var(--pluginWidth);
+  border-bottom: var(--pluginBorderWidth) solid var(--pluginBorderColor);
+  border-right: var(--pluginBorderWidth) solid var(--pluginBorderColor);
+}
+
+.plugin-flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
