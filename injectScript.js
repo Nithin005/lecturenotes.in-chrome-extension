@@ -1,5 +1,5 @@
 let doc;
-let i = 0;
+let i;
 let reader;
 let pageNodes;
 const MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
@@ -45,7 +45,7 @@ function constructButton() {
 function buttonClicked() {
     const script = document.createElement('script');
     const button = document.querySelector('.dl-button');
-
+    i=0;
     document.body.appendChild(script);
 
     button.innerText = 'Loading...'
@@ -81,9 +81,6 @@ function main() {
     button.innerText = `(${i + 1}) /  ${pageNodes.length} loaded`
     i++;
     if (i >= pageNodes.length - 1) {
-        setTimeout(() => {
-            i = 0;
-        }, 5000);
         let titleElement = document.querySelector("head > title");
         doc.save(titleElement.innerText);
         button.innerText = 'Download';
@@ -95,12 +92,12 @@ function main() {
 
 function randomScroll() {
     const button = document.querySelector('.dl-button');
-    const pageNumber = document.querySelector("body > div.MuiDialog-root.reader-track > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div > header.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.jss461.mui-fixed.MuiPaper-elevation4 > div > h6:nth-child(4)");
-    const number = pageNumber.innerText.split(' ')[1];
+  //  const pageNumber = document.querySelector("body > div.MuiDialog-root.reader-track > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div > header.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.jss461.mui-fixed.MuiPaper-elevation4 > div > h6:nth-child(4)");
+  //  const number = pageNumber.innerText.split(' ')[1];
     const handler = setInterval(() => {
         let scrollLen = -window.innerHeight;
         reader.scrollBy(0, scrollLen);
-        if (i === Number(number)) {
+        if (i === (pageNodes.length -1)) {
             clearInterval(handler);
             button.innerHTML = `
             <div class="plugin-flex">
