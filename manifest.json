@@ -13,5 +13,9 @@
       "web_accessible_resources": [
         "injectScript.js"
         ],
-    "manifest_version": 2
+    "manifest_version": 2,
+    "icons": {
+      "48": "assets/icon-48.png",
+      "96": "assets/icon.png"
+    }
 }
