@@ -5,7 +5,6 @@
 
 <p align="center">
     <img src="./assets/1.jpg" width="500" />
-    <img src="./assets/2.jpg" width="500" >
 </p>
 
 ### `Steps`
