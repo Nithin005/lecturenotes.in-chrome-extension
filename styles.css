@@ -1,18 +1,46 @@
+:root {
+  --pluginBorderWidth: 4px;
+  --pluginHeight: 12px;
+  --pluginWidth: 6px;
+  --pluginBorderColor:#F11E33;
+}
 .dl-button {
     background-color: white; 
-    color: black; 
+    color: var(--pluginBorderColor); 
     border: 2px solid #f44336;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    border-radius:22px;
+    display: none;
+    font-size: 0.7777777777777778rem;
     margin: 4px 2px;
     transition-duration: 0.4s;
+    position: fixed;
+    right: 10px;
+    bottom: 60px;
     cursor: pointer;
-  }
+    z-index: 999999;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
 
   .dl-button:hover {
     background-color: #f44336;
     color: white;
-  }
+}
+
+.check {
+  display: inline-block;
+  transform: rotate(45deg);
+  height: var(--pluginHeight);
+  width: var(--pluginWidth);
+  border-bottom: var(--pluginBorderWidth) solid var(--pluginBorderColor);
+  border-right: var(--pluginBorderWidth) solid var(--pluginBorderColor);
+}
+
+.plugin-flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}

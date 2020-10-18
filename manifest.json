@@ -1,10 +1,10 @@
 {
     "name": "lecturenotes downloader",
     "version": "1.0",
-    "description": "Download pdf from lecturenotes.in",
+    "description": "Download notes from lecturenotes.in",
     "content_scripts": [
         {
-          "matches": ["https://lecturenotes.in/notes/*?reading=true*"],
+          "matches": ["https://lecturenotes.in/notes/*"],
           "js": ["contentScript.js"],
           "run_at": "document_idle",
           "css": ["styles.css"]
@@ -15,4 +15,4 @@
         "injectScript.js"
         ],
     "manifest_version": 2
-  }
+}
