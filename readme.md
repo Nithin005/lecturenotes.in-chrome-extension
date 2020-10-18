@@ -8,3 +8,8 @@
     <img src="./assets/2.jpg" width="500" >
 </p>
 
+### `Steps`
+    1. Go to [lecturenotes.in](https://lecturenotes.in/) and choose your notes
+    1. Then click on `read now` button in lecturesnotes.in webpage.
+    1. Then the chrome extension will be automatically loaded. 
+    
