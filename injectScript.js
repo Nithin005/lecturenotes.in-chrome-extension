@@ -43,23 +43,17 @@ function constructButton() {
 }
 
 function buttonClicked() {
-    const script = document.createElement('script');
     const button = document.querySelector('.dl-button');
-    i=0;
-    document.body.appendChild(script);
+    i = 0;
 
-    button.innerText = 'Loading...'
-
-    script.onload = function () {
-        setTimeout(() => {
-            reader = document.querySelector("main");
-            pageNodes = reader.querySelector("div").children;
-            reader.scroll(0, 0);
-            main();
-            randomScroll();
-        }, 1000);
-    };
-    script.src = 'https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js';
+    button.innerText = 'Loading please wait...';
+    setTimeout(() => {
+        reader = document.querySelector("main");
+        pageNodes = reader.querySelector("div").children;
+        reader.scroll(0, 0);
+        main();
+        randomScroll();
+    }, 1000);
 }
 
 
@@ -78,7 +72,7 @@ function main() {
     }
     let imgProp = doc.getImageProperties(url);
     doc.addImage(imgProp.data, 'JPEG', 0, 0, imgProp.width, imgProp.height);
-    button.innerText = `(${i + 1}) /  ${pageNodes.length} loaded`
+    button.innerText = `${i + 1} page loaded out of ${pageNodes.length - 1}`;
     i++;
     if (i >= pageNodes.length - 1) {
         let titleElement = document.querySelector("head > title");
@@ -92,12 +86,10 @@ function main() {
 
 function randomScroll() {
     const button = document.querySelector('.dl-button');
-  //  const pageNumber = document.querySelector("body > div.MuiDialog-root.reader-track > div.MuiDialog-container.MuiDialog-scrollPaper > div > div > div > div > header.MuiPaper-root.MuiAppBar-root.MuiAppBar-positionFixed.MuiAppBar-colorPrimary.jss461.mui-fixed.MuiPaper-elevation4 > div > h6:nth-child(4)");
-  //  const number = pageNumber.innerText.split(' ')[1];
     const handler = setInterval(() => {
         let scrollLen = -window.innerHeight;
         reader.scrollBy(0, scrollLen);
-        if (i === (pageNodes.length -1)) {
+        if (i === (pageNodes.length - 1)) {
             clearInterval(handler);
             button.innerHTML = `
             <div class="plugin-flex">
