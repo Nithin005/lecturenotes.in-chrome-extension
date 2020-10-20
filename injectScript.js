@@ -98,7 +98,7 @@ function randomScroll() {
             </div>
             `
         }
-    }, 1000)
+    }, 1000);
 }
 
 window.onpopstate = history.onpushstate = () => {
