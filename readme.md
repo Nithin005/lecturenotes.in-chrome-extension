@@ -11,6 +11,7 @@
 https://addons.mozilla.org/addon/lecturenotes-downloader
 
 ### Currently not available as Chrome Extension but can be loaded as unpacked Extension
+### Also check this repo for a easier way (works on most browsers): https://github.com/Nithin005/lecturenotes.in-dl.tampermonkey
 
 ### `Steps to load as Unpacked (Chrome):`
 1. Download this repo as zip: https://github.com/Nithin005/lecturenotes.in-chrome-extension/archive/master.zip.
